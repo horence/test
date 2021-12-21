@@ -1,0 +1,37 @@
+import re
+
+# read in a set of sequences, each time that kmer 1 appears, grab the sequence right after it and add to the list
+
+#reads in
+# open (file); read in line;
+# if (line contains kmer): find end position x, add  substring x+1... x+1+k  to the list
+# repeatedly copied GATTACA
+dna_string = "GATTACAGATTGAGATTACAGGATTACGATTACCAGATTACTAGATTACAAGATTACGATTACAATTACAATTACAGATACAGATTACA"
+print(dna_string)
+print("HELP")
+result=dna_string.find("GATTA")
+print(result)
+
+# NOT SURE ABT THIS SYNTAX[m.start() for m in re.finditer('ATT', dna_string)]
+
+import re
+i=0
+my_dict=[]
+k=4
+s1 = dna_string
+pattern = 'ATT'
+
+for match in re.finditer(pattern, s1):
+    i+=1
+    s = match.start()
+    e = match.end()
+    print(i)
+    print(s)
+    print(e)
+    newstring=dna_string[e:e+k]
+    my_dict.append(newstring)
+    print(dna_string[s:e])
+    print(newstring)
+#    mys=mys+dna_string[s:e]
+#    print 'String match "%s" at %d:%d' % (s1[s:e], s, e)
+print(my_dict)
